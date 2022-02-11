@@ -1,31 +1,45 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# HouseHold Game
+House Hold Game is a Python Command Line application that allows for users to be able to record their gaming titles to a library and have it
+printed out to a spreadsheet and emailed over to them for their records.
 
-Welcome Malcolm MikaZuki ,
+## UX
+### Users
+The user should be able to interact with the command line and follow a series of questions that require input in order to advance to the next feature.
+Once all the information has been inputted As as user I expect to receive this information recorded in a spreadsheet and sent over to the email that
+I have provided.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+The Instructions on the Command Line App are clear and concise and leaves little room for error.
 
-## Reminders
+### Application Structure
+The Command line application will lead the user with a basic input of their gaming information:
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+1. Requests users information to be contacted in the form of an email.
+2. Requests for Users Full name.
+3. Requests for the current game title that they wish to input into the application.
+4. Requests the information of what genre the game in question belongs to.
+5. Requests which console platform the game belongs to (i.e. Playstation 5, Xbox One, Nintendo Switch, PC etc.)
+6. Requests number of Hours played during game run time.
+7. Requests what star rating would the user rank the game in their opinion (Star Rating ranging from 1* to 5*)
+8. Updates details to worksheet and then once finished this will be sent over in an email to the user.
+9. The Terminal Displays the final details:
+  •Users Email Address
+  •Users Full Name
+  •Game Title
+  •Console
+  •Hours Played
+  •Star Rating
+  
+### WorkFlow
+Below displays a FlowChart showing the logic of the Application Structure
+![Flowchart](https://user-images.githubusercontent.com/65243328/153658851-b45ecb30-cef3-47ac-a846-11f63e7ddb05.JPG)
 
-## Creating the Heroku app
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+## Features
 
-1. `heroku/python`
-2. `heroku/nodejs`
+## Testing
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+## Deployment
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!
+## Credits
+  
+  
