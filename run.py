@@ -1,6 +1,21 @@
 import gspread
 from google.oauth2.service_account import Credentials
 
+# ----- EMAIL SETTINGS ----- #
+import smtplib  # SMTP protocol client (sending emails)
+from email.mime.multipart import MIMEMultipart  # MIME (sending emails)
+from email.mime.text import MIMEText  # Multipurpose Internet Mail Extensions
+if os.path.exists("env.py"):
+    import env  # noqa
+MY_ADDRESS = os.environ.get("MY_ADDRESS")
+PASSWORD = os.environ.get("PASSWORD")
+
+FULL_NAME = ""
+BOOK_DATA = ""
+USER_EMAIL = ""
+START_DATE = ""
+END_DATE = ""
+READER_INFO = []
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
