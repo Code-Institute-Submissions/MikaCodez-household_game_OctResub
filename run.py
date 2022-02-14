@@ -13,7 +13,7 @@ MY_ADDRESS = os.environ.get("MY_ADDRESS")
 PASSWORD = os.environ.get("PASSWORD")
 
 FULL_NAME = ""
-BOOK_DATA = ""
+GAME_DATA = ""
 USER_EMAIL = ""
 START_DATE = ""
 END_DATE = ""
@@ -30,56 +30,6 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('household_game')
 
-def get_games_data():
-    """
-    Get games information input from the user.
-    Run a while loop to collect a valid string of data from the user
-    via the terminal, which must be a string of 6 numbers separated
-    by commas. The loop will repeatedly request data, until it is valid.
-    """
-    while True:
-        print("Please enter game data information into console.")
-        print("Data should be six numbers, separated by commas.")
-        print("Example: 10,20,30,40,50,60\n")
-
-        data_str = input("Enter your data here:\n")
-
-        games_data = data_str.split(",")
-
-        if validate_data(ganes_data):
-            print("Data is valid!")
-            break
-
-    return games_data
-
-def validate_data(values):
-    """
-    Inside the try, converts all string values into integers.
-    Raises ValueError if strings cannot be converted into int,
-    or if there aren't exactly 7 values.
-    """
-    try:
-        [int(value) for value in values]
-        if len(values) != 7:
-            raise ValueError(
-                f"Exactly 7 values required, you provided {len(values)}"
-            )
-    except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")
-        return False
-
-    return True
-    
-def update_worksheet(data, worksheet):
-    """
-    Receives a list of integers to be inserted into a worksheet
-    Update the relevant worksheet with the data provided
-    """
-    print(f"Updating {worksheet} worksheet...\n")
-    worksheet_to_update = SHEET.worksheet(worksheet)
-    worksheet_to_update.append_row(data)
-    print(f"{worksheet} worksheet updated successfully\n")
-
 def submit_game():
  
     """
@@ -95,8 +45,28 @@ def submit_game():
  
     The credits of raw-python email code is mentioned in README.md
     """
-games = SHEET.worksheet('games')
+def get_games_data():
+    print("Please enter game data")
+    print("data should be as requested, seperated by commas")
+    print("i.e. Email, users name, game, genre, hours played, star rating\n")
 
-data = games.get_all_values()
+    data_str = input("Enter your data here: ")
+    print(f"The data provided is {data_str}")
 
-print(data)
+
+get_games_data()
+
+   
+def update_games_worksheet(data, worksheet):
+    """
+    Update the games worksheet, by adding new row with the 
+    data provided.
+    """
+    print("updating games worksheet...\n")
+    games_worksheet = SHEET.worksheet("games")
+    games_worksheet.append_row(data)
+    print("Games worksheet updated successfully.\n")
+
+data = get_games_data()
+games_data = ()
+update_games_worksheet(games_data)
