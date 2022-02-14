@@ -1,5 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
+import os
+from os import system, name
 
 # ----- EMAIL SETTINGS ----- #
 import smtplib  # SMTP protocol client (sending emails)
@@ -50,40 +52,51 @@ def get_games_data():
 
     return games_data
 
+def validate_data(values):
+    """
+    Inside the try, converts all string values into integers.
+    Raises ValueError if strings cannot be converted into int,
+    or if there aren't exactly 7 values.
+    """
+    try:
+        [int(value) for value in values]
+        if len(values) != 7:
+            raise ValueError(
+                f"Exactly 7 values required, you provided {len(values)}"
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+        return False
+
+    return True
+    
+def update_worksheet(data, worksheet):
+    """
+    Receives a list of integers to be inserted into a worksheet
+    Update the relevant worksheet with the data provided
+    """
+    print(f"Updating {worksheet} worksheet...\n")
+    worksheet_to_update = SHEET.worksheet(worksheet)
+    worksheet_to_update.append_row(data)
+    print(f"{worksheet} worksheet updated successfully\n")
 
 def submit_game():
-
+ 
     """
     Call email, username, and game_info functions one by one
-
+ 
     This function handles the automated python email sent to user
-
+ 
     The email is sent from household game to the user email given.
-
+ 
     As it is an automatic email, it is the user's responsibility
-
+ 
     to enter valid information.
-
+ 
     The credits of raw-python email code is mentioned in README.md
     """
+games = SHEET.worksheet('games')
 
-global USER_EMAIL
-global FULL_NAME
-global GAME_DATA
-global HOURSPLAYED_DATA
-global GENRE_DATA
-global CONSOLE_DATA
-global STARRATING_DATA
-USER_EMAIL = email()
-FULL_NAME = username()
-print(FULL_NAME)
-GANE_DATA = game_info()
-print(GAME_DATA)
-HOURSPLAYED_DATA = hours_played_data()
-print(HOURSPLAYED_DATA)
-CONSOLE = console_data()
-print(CONSOLE_DATA)
-GENRE_DATA = genre_data()
-print(GENRE_DATA)
-STARRATING_DATA = star_rating_data()
-print(STARRATING_DATA)
+data = games.get_all_values()
+
+print(data)
