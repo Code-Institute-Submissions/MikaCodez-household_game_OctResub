@@ -30,11 +30,12 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('household_game')
 
-def submit_game():
+#def submit_game():
  
+    
+def get_games_data():
     """
     Call email, username, and game_info functions one by one
- 
     This function handles the automated python email sent to user
  
     The email is sent from household game to the user email given.
@@ -45,7 +46,6 @@ def submit_game():
  
     The credits of raw-python email code is mentioned in README.md
     """
-def get_games_data():
     print("Please enter game data")
     print("data should be as requested, seperated by commas")
     print("i.e. Email, users name, game, genre, hours played, star rating\n")
@@ -53,20 +53,23 @@ def get_games_data():
     data_str = input("Enter your data here: ")
     print(f"The data provided is {data_str}")
 
+    update_games_worksheet(data_str)
+    print(type(data_str))
+    return data_str
 
-get_games_data()
-
-   
-def update_games_worksheet(data, worksheet):
+ 
+def update_games_worksheet(data):
     """
     Update the games worksheet, by adding new row with the 
     data provided.
     """
     print("updating games worksheet...\n")
     games_worksheet = SHEET.worksheet("games")
-    games_worksheet.append_row(data)
+    games_worksheet.append_row([data_str, games])
     print("Games worksheet updated successfully.\n")
 
+
 data = get_games_data()
-games_data = ()
-update_games_worksheet(games_data)
+games_data = (worksheet.update)
+get_games_data()
+#update_games_worksheet(data_str, games)
