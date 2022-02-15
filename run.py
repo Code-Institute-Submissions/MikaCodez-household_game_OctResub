@@ -17,7 +17,7 @@ GAME_DATA = ""
 USER_EMAIL = ""
 START_DATE = ""
 END_DATE = ""
-READER_INFO = []
+GAMER_INFO = []
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -30,7 +30,6 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('household_game')
 
-#def submit_game():
  
     
 def get_games_data():
@@ -50,12 +49,12 @@ def get_games_data():
     print("data should be as requested, seperated by commas")
     print("i.e. Email, users name, game, genre, hours played, star rating\n")
 
-    data_str = input("Enter your data here: ")
-    print(f"The data provided is {data_str}")
+    data = input("Enter your data here:\n ")
+    print(f"The data provided is {data}")
 
-    update_games_worksheet(data_str)
-    print(type(data_str))
-    return data_str
+    update_games_worksheet(data)
+    print(type(data))
+    returned_data = get_games_data()
 
  
 def update_games_worksheet(data):
@@ -65,11 +64,12 @@ def update_games_worksheet(data):
     """
     print("updating games worksheet...\n")
     games_worksheet = SHEET.worksheet("games")
-    games_worksheet.append_row([data_str, games])
+    games_worksheet.append_row([data, games])
     print("Games worksheet updated successfully.\n")
 
 
 data = get_games_data()
+games = data()
 games_data = (worksheet.update)
 get_games_data()
-#update_games_worksheet(data_str, games)
+update_games_worksheet(returned_data)
