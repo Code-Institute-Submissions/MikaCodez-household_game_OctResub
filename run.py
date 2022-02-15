@@ -45,9 +45,26 @@ def get_games_data():
  
     The credits of raw-python email code is mentioned in README.md
     """
-    print("Please enter game data")
-    print("data should be as requested, seperated by commas")
-    print("i.e. Email, users name, game, genre, hours played, star rating\n")
+    print("Welcome to HouseHold Game!")
+    '''
+    Graphic below from https://www.asciiart.eu/video-games/sonic-the-hedgehog
+    '''
+    print(
+                '''          .,
+                .      _,'f----.._
+                |\ ,-'"/  |     ,'
+                |,_  ,--.      /
+                /,-. ,'`.     (_
+                f  o|  o|__     "`-.
+                ,-._.,--'_ `.   _.,-`
+                `"' ___.,'` j,-'
+                `-.__.,--'"
+            "Here you will enter a A record of the games that you played, so that you can
+            log and track your favourite games"
+            "This will be then printed in a spreadsheet for you and sent over to your email!"
+            "Please enter game data"
+            "data should be as requested, seperated by commas"
+            "i.e. Email, Game, Genre, Hours played, Star rating\n"''')
 
     data = input("Enter your data here:\n ")
     print(f"The data provided is {data}")
