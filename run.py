@@ -64,7 +64,10 @@ def get_games_data():
             "This will be then printed in a spreadsheet for you and sent over to your email!"
             "Please enter game data"
             "data should be as requested, seperated by commas"
-            "i.e. Email, Game, Genre, Hours played, Star rating\n"''')
+            "i.e. Email, Game, Genre, Hours played, Star rating\n"
+            "Are you ready to start?!!\n"''')
+
+def submit_games():
 
     data = input("Enter your data here:\n ")
     print(f"The data provided is {data}")
@@ -79,14 +82,29 @@ def update_games_worksheet(data):
     Update the games worksheet, by adding new row with the 
     data provided.
     """
-    print("updating games worksheet...\n")
-    games_worksheet = SHEET.worksheet("games")
-    games_worksheet.append_row([data, games])
-    print("Games worksheet updated successfully.\n")
+def get_user_input(prompt):
+    return input(prompt)
+
+def print_out_to_console(value_to_be_printed):
+    print(value_to_be_printed)
+email = get_user_input("Input your Email address")
+game = get_user_input("Input Game Title")
+genre = get_user_input("Input Game genre")
+console = get_user_input("Input Game Console")
+hours_played = get_user_input("Input gameplay hours")
+star_rating = get_user_input("Input Star Rating")
+print("updating games worksheet...\n")
+games_worksheet = SHEET.worksheet("games")
+worksheet_headings = games.worksheet.row_values(1)
+
+games_worksheet.append_row([data, games])
+print(data)
+
+
+print("Games worksheet updated successfully.\n")
 
 
 data = get_games_data()
-games = data()
 games_data = (worksheet.update)
 get_games_data()
 update_games_worksheet(returned_data)
