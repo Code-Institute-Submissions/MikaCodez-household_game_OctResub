@@ -87,17 +87,17 @@ def get_user_input(prompt):
 
 def print_out_to_console(value_to_be_printed):
     print(value_to_be_printed)
-email = get_user_input("Input your Email address")
-game = get_user_input("Input Game Title")
-genre = get_user_input("Input Game genre")
-console = get_user_input("Input Game Console")
-hours_played = get_user_input("Input gameplay hours")
-star_rating = get_user_input("Input Star Rating")
+email = get_user_input("Input your Email address\n")
+game = get_user_input("Input Game Title\n")
+genre = get_user_input("Input Game genre\n")
+console = get_user_input("Input Game Console\n")
+hours_played = get_user_input("Input gameplay hours\n")
+star_rating = get_user_input("Input Star Rating\n")
 print("updating games worksheet...\n")
 games_worksheet = SHEET.worksheet("games")
 worksheet_headings = games.worksheet.row_values(1)
 
-games_worksheet.append_row([data, games])
+games_worksheet.append_row([data])
 print(data)
 
 
