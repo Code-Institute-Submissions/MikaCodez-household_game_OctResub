@@ -28,15 +28,22 @@ def get_games_data():
  
     The credits of raw-python email code is mentioned in README.md
     """
-    print("Welcome to HouseHold Game!")
-    print("Data should be seperated by commas.")
-    print("Example: Harry, Pokemon, Gba, 30, 5*.")
-    
+    while True:
+        print("Welcome to HouseHold Game!")
+        print("Data should be seperated by commas.")
+        print("Example: Harry, Pokemon, Gba, 30, 5*.")
+        
 
-    data_str = input("Enter your data here: ")
-    
-    games_data = data_str.split(",")
-    validate_data(games_data)
+        data_str = input("Enter your data here: ")
+        
+        games_data = data_str.split(",")
+        validate_data(games_data)
+
+        if validate_data(games_data):
+            print("Data is valid!")
+            break
+
+    return games_data
 
 
 def validate_data(values):
@@ -45,12 +52,16 @@ def validate_data(values):
     Raises ValueError if strings cannot be converted into int,
     or if there are more than 7 values.
     """
+    print(values)
     try:
         if len(values) != 7:
             raise ValueError(
                 f"Exactly 7 values required, you provided {len(values)}"
             )
     except ValueError as e:
-        print(f"Invalid data: {e}, please try again. \n")       
+        print(f"Invalid data: {e}, please try again. \n")
+        return False
 
-get_games_data()
+    return True       
+
+data = get_games_data()
