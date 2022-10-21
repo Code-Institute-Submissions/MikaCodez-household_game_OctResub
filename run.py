@@ -75,8 +75,14 @@ def update_games_worksheet(data):
     games_worksheet.append_row(data)
     print("Games workshet updated successfully.\n")
 
+def main():
+    """
+    Run all program functions
+    """
+    values = get_games_data()
+    data = get_games_data()
+    games_data = [str(values)for value in data]
+    update_games_worksheet(games_data)
 
-values = get_games_data()
-data = get_games_data()
-games_data = [str(values)for value in data]
-update_games_worksheet(games_data)
+print("Hey all You Crazy Gamers!")
+main()
