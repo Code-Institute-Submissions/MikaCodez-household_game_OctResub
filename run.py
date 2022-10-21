@@ -65,4 +65,18 @@ def validate_data(values):
 
     return True       
 
+def update_games_worksheet(data):
+    """
+    Update the games worksheet, by adding new row with the 
+    data provided.
+    """
+    print("Updating games worksheet...\n")
+    games_worksheet = SHEET.worksheet("games")
+    games_worksheet.append_row(data)
+    print("Games workshet updated successfully.\n")
+
+
+values = get_games_data()
 data = get_games_data()
+games_data = [str(values)for value in data]
+update_games_worksheet(games_data)
