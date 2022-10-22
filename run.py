@@ -30,13 +30,43 @@ def get_games_data():
     """
     while True:
         print("Welcome to HouseHold Game!")
+        print(
+                '''          .,
+                .      _,'f----.._
+                |\ ,-'"/  |     ,'
+                |,_  ,--.      /
+                /,-. ,'`.     (_
+                f  o|  o|__     "`-.
+                ,-._.,--'_ `.   _.,-`
+                `"' ___.,'` j,-'
+                `-.__.,--'"
+            "Here you will enter a A record of the games that you played, so that you can
+            log and track your favourite games"
+            "This will be then printed in a spreadsheet for you and sent over to your email!"
+            "Please enter game data"
+            "data should be as requested, seperated by commas"
+            "i.e. Email, Name, Game, Genre, Hours played, Star rating\n"
+            "Are you ready to start?!!\n"''')
         print("Data should be seperated by commas.")
-        print("Example: Harry, Pokemon, Gba, 30, 5*.")
+        print("Example: Harry@gmail.com, Harry, Pokemon, RPG, Gba, 30, 5*.")
         
 
-        data_str = input("Enter your data here: ")
+        def get_user_input(prompt):
+            return input(prompt)
+
+        def print_out_to_console(value_to_be_printed):
+            print(value_to_be_printed)
+        email = get_user_input("Input your Email address\n")
+        name = get_user_input("Input your Name\n")
+        game = get_user_input("Input Game Title\n")
+        genre = get_user_input("Input Game genre\n")
+        console = get_user_input("Input Game Console\n")
+        hours_played = get_user_input("Input gameplay hours\n")
+        star_rating = get_user_input("Input Star Rating\n")
+        # data_str = input("Enter your data here: ")
         
         games_data = data_str.split(",")
+        data_str = get_user_input()
         validate_data(games_data)
 
         if validate_data(games_data):
@@ -79,10 +109,12 @@ def main():
     """
     Run all program functions
     """
+    get_user_input = get_games_data()
     values = get_games_data()
     data = get_games_data()
     games_data = [str(values)for value in data]
     update_games_worksheet(games_data)
+    
 
 print("Hey all You Crazy Gamers!")
 main()

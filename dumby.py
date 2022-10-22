@@ -79,6 +79,7 @@ def get_user_input(prompt):
 def print_out_to_console(value_to_be_printed):
     print(value_to_be_printed)
 email = get_user_input("Input your Email address\n")
+name = get_user_input("Input your Name\n")
 game = get_user_input("Input Game Title\n")
 genre = get_user_input("Input Game genre\n")
 console = get_user_input("Input Game Console\n")
