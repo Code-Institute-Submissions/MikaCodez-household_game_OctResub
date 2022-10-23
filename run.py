@@ -1,5 +1,23 @@
 import os
 from os import system, name
+# ----- EMAIL SETTINGS ----- #
+import smtplib  # SMTP protocol client (sending emails)
+from email.mime.multipart import MIMEMultipart  # MIME (sending emails)
+from email.mime.text import MIMEText  # Multipurpose Internet Mail Extensions
+if os.path.exists("env.py"):
+    import env  # noqa
+MY_ADDRESS = os.environ.get("MY_ADDRESS")
+PASSWORD = os.environ.get("PASSWORD")
+
+FULL_NAME = ""
+GAME_DATA = ""
+USER_EMAIL = ""
+STAR_RATING = ""
+HOURS_PLAYED = ""
+GAMER_INFO = []
+
+
+
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -63,10 +81,10 @@ def get_games_data():
         console = get_user_input("Input Game Console\n")
         hours_played = get_user_input("Input gameplay hours\n")
         star_rating = get_user_input("Input Star Rating\n")
-        # data_str = input("Enter your data here: ")
+        data_str = input("Enter your data here: ")
         
         games_data = data_str.split(",")
-        data_str = get_user_input()
+        data_str = get_user_input(prompt)
         validate_data(games_data)
 
         if validate_data(games_data):
@@ -93,7 +111,18 @@ def validate_data(values):
         print(f"Invalid data: {e}, please try again. \n")
         return False
 
-    return True       
+    return True
+
+
+def validate_data_str(values):
+    if value == "":
+        clear()
+        print("Sorry.. Entry cannot be left empty..\n")
+        return False
+    else:
+        return True
+    return True
+
 
 def update_games_worksheet(data):
     """

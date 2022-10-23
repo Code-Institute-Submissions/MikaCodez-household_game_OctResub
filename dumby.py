@@ -10,8 +10,8 @@ PASSWORD = os.environ.get("PASSWORD")
 FULL_NAME = ""
 GAME_DATA = ""
 USER_EMAIL = ""
-START_DATE = ""
-END_DATE = ""
+STAR_RATING = ""
+HOURS_PLAYED = ""
 GAMER_INFO = []
 
 
