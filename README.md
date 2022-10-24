@@ -21,7 +21,7 @@ The Command line application will lead the user with a basic input of their gami
 5. Requests which console platform the game belongs to (i.e. Playstation 5, Xbox One, Nintendo Switch, PC etc.)
 6. Requests number of Hours played during game run time.
 7. Requests what star rating would the user rank the game in their opinion (Star Rating ranging from 1* to 5*)
-8. Updates details to worksheet and then once finished this will be sent over in an email to the user.
+8. Updates details to worksheet and then once finished this will be recorded in a spreadsheet for the user.
 9. The Terminal Displays the final details:
   •Users Email Address
   •Users Full Name
