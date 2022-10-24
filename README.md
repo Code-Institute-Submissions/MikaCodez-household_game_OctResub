@@ -53,8 +53,11 @@ Remaining Bugs:
 
 Validator Testing
 PEP8:
-No errors found in PEP8
+Errors found in PEP*  online via pycodestyle as PEP8 Onine validator tool is offline
 Some warnings found, and resolved by making changes requested. Details in Testing
+Only error found is that line is too long. However for what this is specified for I kept it as it is, as I didnt want to break the code.
+![image](https://user-images.githubusercontent.com/65243328/197505701-b9af854b-797c-41be-a5bb-fdb13e710f14.png)
+
 
 ## Deployment
 
