@@ -1,23 +1,5 @@
 import os
 from os import system, name
-# ----- EMAIL SETTINGS ----- #
-import smtplib  # SMTP protocol client (sending emails)
-from email.mime.multipart import MIMEMultipart  # MIME (sending emails)
-from email.mime.text import MIMEText  # Multipurpose Internet Mail Extensions
-if os.path.exists("env.py"):
-    import env  # noqa
-MY_ADDRESS = os.environ.get("MY_ADDRESS")
-PASSWORD = os.environ.get("PASSWORD")
-
-FULL_NAME = ""
-GAME_DATA = ""
-USER_EMAIL = ""
-STAR_RATING = ""
-HOURS_PLAYED = ""
-GAMER_INFO = []
-
-
-
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -63,28 +45,21 @@ def get_games_data():
             "This will be then printed in a spreadsheet for you and sent over to your email!"
             "Please enter game data"
             "data should be as requested, seperated by commas"
-            "i.e. Email, Name, Game, Genre, Hours played, Star rating\n"
+            "i.e. Email, Name, Game, Genre, Platform, Hours played, Star rating\n"
             "Are you ready to start?!!\n"''')
         print("Data should be seperated by commas.")
         print("Example: Harry@gmail.com, Harry, Pokemon, RPG, Gba, 30, 5*.")
-        
 
-        def get_user_input(prompt):
-            return input(prompt)
-
-        def print_out_to_console(value_to_be_printed):
-            print(value_to_be_printed)
-        email = get_user_input("Input your Email address\n")
-        name = get_user_input("Input your Name\n")
-        game = get_user_input("Input Game Title\n")
-        genre = get_user_input("Input Game genre\n")
-        console = get_user_input("Input Game Console\n")
-        hours_played = get_user_input("Input gameplay hours\n")
-        star_rating = get_user_input("Input Star Rating\n")
-        data_str = input("Enter your data here: ")
+        email = input("Input your Email address\n")
+        user_name = input("Input your Name\n")
+        game = input("Input Game Title\n")
+        genre = input("Input Game genre\n")
+        console = input("Input Game Console\n")
+        hours_played = input("Input gameplay hours\n")
+        star_rating = input("Input Star Rating\n")
+        data_str = f'{email}, {user_name}, {game}, {genre}, {console}, {hours_played}, {star_rating}'
         
         games_data = data_str.split(",")
-        data_str = get_user_input(prompt)
         validate_data(games_data)
 
         if validate_data(games_data):
@@ -138,10 +113,8 @@ def main():
     """
     Run all program functions
     """
-    get_user_input = get_games_data()
-    values = get_games_data()
     data = get_games_data()
-    games_data = [str(values)for value in data]
+    games_data = [str(value)for value in data]
     update_games_worksheet(games_data)
     
 
